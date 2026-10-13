@@ -90,3 +90,8 @@ details p{color:var(--mut);margin:1.2rem 0 0}
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.mtrack{animation:none}.slide::before{transition:none}}
 @media(max-width:989px){.iwt,.split{grid-template-columns:1fr;gap:3.2rem}.svc,.equip{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr 1fr}.gallery{grid-template-columns:1fr 1fr}.quote{background-attachment:scroll;padding:10rem 1.6rem}.quotein p{font-size:2.8rem}.hdricons .ico{display:none}}
 @media(max-width:560px){.svc,.equip,.steps,.row,.fgrid{grid-template-columns:1fr}.mtrack{font-size:2.4rem}.equip>div{padding:2.4rem}.builder{padding:2rem}}
+.logo img{display:block;height:44px;width:auto}
+.ftr .logo img{height:52px;margin-bottom:12px}
+@media(max-width:700px){.logo img{height:34px}}
+.hdr:not(.solid) .logo img{filter:invert(1);transition:filter .35s}
+body.menu-open .hdr .logo img{filter:none}
