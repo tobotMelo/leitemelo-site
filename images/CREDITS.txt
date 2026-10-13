@@ -1,0 +1,38 @@
+DEMO STOCK IMAGES - placeholders only, NOT LeiteMelo's own work. Replace with real photos before launch.
+CC BY / CC BY-SA images require this attribution while in use. Images were cropped/resized.
+
+hero-1.jpg: "Lynx ULTRA 64 Flatbed UV Rotary Printing.jpg" by Johneve4343, CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Lynx_ULTRA_64_Flatbed_UV_Rotary_Printing.jpg
+hero-2.jpg: Unsplash photo https://images.unsplash.com/photo-1738162837438-92ff852619a1 (Unsplash License)
+hero-3.jpg: "Laser engraved wood.webp" by Wikideas1, CC0, https://commons.wikimedia.org/wiki/File:Laser_engraved_wood.webp
+p-cutting-board.jpg: Unsplash photo https://images.unsplash.com/photo-1726568948497-ee41ebfbb2ef (Unsplash License)
+p-cutting-board-2.jpg: "Laser engraved wood.webp" by Wikideas1, CC0, https://commons.wikimedia.org/wiki/File:Laser_engraved_wood.webp
+p-tumbler.jpg: Unsplash photo https://images.unsplash.com/photo-1578496357126-140eaf039055 (Unsplash License)
+p-tumbler-2.jpg: Unsplash photo https://images.unsplash.com/photo-1544003484-3cd181d17917 (Unsplash License)
+p-wallet.jpg: Unsplash photo https://images.unsplash.com/photo-1531190260877-c8d11eb5afaf (Unsplash License)
+p-wallet-2.jpg: Unsplash photo https://images.unsplash.com/photo-1485897790417-5bbfe0e37428 (Unsplash License)
+p-slate.jpg: "Mat diod.jpg" by Stefanik, CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Mat_diod.jpg
+p-slate-2.jpg: Unsplash photo https://images.unsplash.com/photo-1754606581556-f1ce15df35b8 (Unsplash License)
+p-acrylic.jpg: "Printed acrylic display with informative graphics.jpg" by Helene.3160, CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Printed_acrylic_display_with_informative_graphics.jpg
+p-acrylic-2.jpg: "Restroom Acrylic Sign with Mounting Hardware.jpg" by Helene.3160, CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Restroom_Acrylic_Sign_with_Mounting_Hardware.jpg
+p-keychain.jpg: "Arte Runico Gemma Anjana vegvisir keychain olive wood Paracuellos de la Ribera.webp" by CarlosNanuk, CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Arte_Runico_Gemma_Anjana_vegvisir_keychain_olive_wood_Paracuellos_de_la_Ribera.webp
+p-keychain-2.jpg: Unsplash photo https://images.unsplash.com/photo-1741417657803-f49d647abce4 (Unsplash License)
+p-phone.jpg: "PhoneSpinner Image.png" by Rexbye, CC0, https://commons.wikimedia.org/wiki/File:PhoneSpinner_Image.png
+p-phone-2.jpg: "Lynx ULTRA 64 Flatbed UV Rotary Printing.jpg" by Johneve4343, CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Lynx_ULTRA_64_Flatbed_UV_Rotary_Printing.jpg
+p-glass.jpg: "Engraved drinking glass 02.jpg" by Kritzolina, CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Engraved_drinking_glass_02.jpg
+p-glass-2.jpg: "Laser Engraver.jpg" by Jason7825, Public domain, https://commons.wikimedia.org/wiki/File:Laser_Engraver.jpg
+p-mirror.jpg: "Laser Engraved Mirror by Mirror-Engraving.jpg" by Williejan, CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Laser_Engraved_Mirror_by_Mirror-Engraving.jpg
+p-mirror-2.jpg: "Laser engraved wood.webp" by Wikideas1, CC0, https://commons.wikimedia.org/wiki/File:Laser_engraved_wood.webp
+p-map.jpg: "Map of accused witches in Scotland - laser cut from wood.jpg" by Stinglehammer, CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Map_of_accused_witches_in_Scotland_-_laser_cut_from_wood.jpg
+p-map-2.jpg: "GIANT Laser Cut Milwaukee Map! (2014-02-23 by Kevin B 3).jpg" by Kevin B 3, CC BY 2.0, https://commons.wikimedia.org/wiki/File:GIANT_Laser_Cut_Milwaukee_Map!_(2014-02-23_by_Kevin_B_3).jpg
+p-bottle.jpg: "Tumbler Hari Peduli Sampah Nasional 2025.jpg" by Ahmadrizky0102, CC BY 4.0, https://commons.wikimedia.org/wiki/File:Tumbler_Hari_Peduli_Sampah_Nasional_2025.jpg
+p-bottle-2.jpg: Unsplash photo https://images.unsplash.com/photo-1605539585404-a846f1193d19 (Unsplash License)
+p-wood-kit.jpg: "Laser cut geodesic test assemble.jpg" by Jared Tarbell, CC BY 2.0, https://commons.wikimedia.org/wiki/File:Laser_cut_geodesic_test_assemble.jpg
+p-wood-kit-2.jpg: "Map of accused witches in Scotland - laser cut from wood.jpg" by Stinglehammer, CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Map_of_accused_witches_in_Scotland_-_laser_cut_from_wood.jpg
+g-1.jpg: "GIANT Laser Cut Milwaukee Map! (2014-02-23 by Kevin B 3).jpg" by Kevin B 3, CC BY 2.0, https://commons.wikimedia.org/wiki/File:GIANT_Laser_Cut_Milwaukee_Map!_(2014-02-23_by_Kevin_B_3).jpg
+g-2.jpg: "Laser Engraver.jpg" by Jason7825, Public domain, https://commons.wikimedia.org/wiki/File:Laser_Engraver.jpg
+g-3.jpg: Unsplash photo https://images.unsplash.com/photo-1614330315526-166f2d71e544 (Unsplash License)
+g-4.jpg: Unsplash photo https://images.unsplash.com/photo-1598638946524-1625153176e4 (Unsplash License)
+g-5.jpg: "Laser Engraved Mirror by Mirror-Engraving.jpg" by Williejan, CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Laser_Engraved_Mirror_by_Mirror-Engraving.jpg
+g-6.jpg: "Printed acrylic display with informative graphics.jpg" by Helene.3160, CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Printed_acrylic_display_with_informative_graphics.jpg
+banner.jpg: Unsplash photo https://images.unsplash.com/photo-1738162837438-92ff852619a1 (Unsplash License)
+about.jpg: Unsplash photo https://images.unsplash.com/photo-1726568948497-ee41ebfbb2ef (Unsplash License)
