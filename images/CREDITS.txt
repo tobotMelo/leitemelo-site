@@ -36,3 +36,26 @@ g-5.jpg: "Laser Engraved Mirror by Mirror-Engraving.jpg" by Williejan, CC BY-SA 
 g-6.jpg: "Printed acrylic display with informative graphics.jpg" by Helene.3160, CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Printed_acrylic_display_with_informative_graphics.jpg
 banner.jpg: Unsplash photo https://images.unsplash.com/photo-1738162837438-92ff852619a1 (Unsplash License)
 about.jpg: Unsplash photo https://images.unsplash.com/photo-1726568948497-ee41ebfbb2ef (Unsplash License)
+
+# Added Oct 2026 (Wikimedia Commons; resized)
+c-jewelry.jpg: "Gold Necklace with Pendants MET DP241637.jpg" by unknown, CC0, https://commons.wikimedia.org/wiki/File:Gold_Necklace_with_Pendants_MET_DP241637.jpg
+c-pet.jpg: "Dog during snowfall (Unsplash).jpg" by Wil Stewart wilstewart3, CC0, https://commons.wikimedia.org/wiki/File:Dog_during_snowfall_(Unsplash).jpg
+h-gift.jpg: "Brown gift box with red ribbon and bow.jpg" by Shixart1985, CC BY 2.0, https://commons.wikimedia.org/wiki/File:Brown_gift_box_with_red_ribbon_and_bow.jpg
+h-hero.jpg: "Kalender lazerr.jpg" by Kalender Laser Machine, CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Kalender_lazerr.jpg
+n-candle.jpg: "Candle (Unsplash).jpg" by Jeffrey Wegrzyn jeffreymwegrzyn, CC0, https://commons.wikimedia.org/wiki/File:Candle_(Unsplash).jpg
+n-compact.jpg: "Silver bracelet MET DP114296.jpg" by unknown, CC0, https://commons.wikimedia.org/wiki/File:Silver_bracelet_MET_DP114296.jpg
+n-flask.jpg: "Flask, hip (AM 2003.99.13-9).jpg" by David Iraia Moetara; Hutton, CC BY 4.0, https://commons.wikimedia.org/wiki/File:Flask,_hip_(AM_2003.99.13-9).jpg
+n-knife.jpg: "Gear (Unsplash).jpg" by Goran Ivos givos, CC0, https://commons.wikimedia.org/wiki/File:Gear_(Unsplash).jpg
+n-leather.jpg: "Leather notebook (Unsplash).jpg" by Kelly Jean kellyjean, CC0, https://commons.wikimedia.org/wiki/File:Leather_notebook_(Unsplash).jpg
+n-mug.jpg: "Coffee Mug (Unsplash).jpg" by Ryan Holloway hollowaykryan, CC0, https://commons.wikimedia.org/wiki/File:Coffee_Mug_(Unsplash).jpg
+n-ornament.jpg: "Christmas Holly Decoration (157648587).jpeg" by Markus Spiske Freeforcommercialuse Net, CC BY 3.0, https://commons.wikimedia.org/wiki/File:Christmas_Holly_Decoration_(157648587).jpeg
+n-pen.jpg: "Fountain pen nib (Unsplash).jpg" by MJ S seikco, CC0, https://commons.wikimedia.org/wiki/File:Fountain_pen_nib_(Unsplash).jpg
+n-puzzle.jpg: "Laser cut wood detail.jpg" by Lightwave, CC BY-SA 3.0, https://commons.wikimedia.org/wiki/File:Laser_cut_wood_detail.jpg
+n-watch.jpg: "Watch on a wrist (Unsplash).jpg" by Sven van der Pluijm svenson, CC0, https://commons.wikimedia.org/wiki/File:Watch_on_a_wrist_(Unsplash).jpg
+n-wine.jpg: "Wine glasses (Unsplash).jpg" by James Harris jharris, CC0, https://commons.wikimedia.org/wiki/File:Wine_glasses_(Unsplash).jpg
+o-birthday.jpg: "Wrapped book from the Boekhandel van der Velde as a gift, Groningen (2019) 01.jpg" by Donald Trung Quoc Don, CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Wrapped_book_from_the_Boekhandel_van_der_Velde_as_a_gift,_Groningen_(2019)_01.jpg
+o-corp.jpg: "Businessman working and writing notes in office (Unsplash).jpg" by JESHOOTS.COM jeshoots, CC0, https://commons.wikimedia.org/wiki/File:Businessman_working_and_writing_notes_in_office_(Unsplash).jpg
+o-father.jpg: "Life's lens -whisky -whiskey -berlin -bar -drink -glass -lights (33314579014).jpg" by tim neill, CC BY 2.0, https://commons.wikimedia.org/wiki/File:Life%27s_lens_-whisky_-whiskey_-berlin_-bar_-drink_-glass_-lights_(33314579014).jpg
+o-grad.jpg: "Graduation diploma, graduation cap and senior ring of Robert Paul Rowan (10009396).jpg" by University of Texas at Arlington Photograph Collection, CC BY 4.0, https://commons.wikimedia.org/wiki/File:Graduation_diploma,_graduation_cap_and_senior_ring_of_Robert_Paul_Rowan_(10009396).jpg
+o-mother.jpg: "Man with Flower Bouquet (Unsplash).jpg" by Shamim Nakhai shamimnakhai, CC0, https://commons.wikimedia.org/wiki/File:Man_with_Flower_Bouquet_(Unsplash).jpg
+o-wedding.jpg: "Wedding rings (Unsplash).jpg" by Glen McCallum glen_mccallum, CC0, https://commons.wikimedia.org/wiki/File:Wedding_rings_(Unsplash).jpg
