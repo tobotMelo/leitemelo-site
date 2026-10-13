@@ -174,3 +174,21 @@ h2{font-size:4rem}.carousel{grid-auto-columns:calc((100% - 3*2.4rem)/4);gap:2.4r
 .guide{grid-template-columns:repeat(3,1fr);max-width:100rem;margin:auto}
 .ftr{padding-bottom:3.2rem}.fgrid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem}.fcol{border:0}.fcol summary{pointer-events:none;padding-top:0}.fcol summary::after{display:none}}
 .sheet .row{grid-template-columns:1fr 1fr}
+/* v7: message chooser */
+button.ico{background:none;border:0;cursor:pointer;padding:0;color:inherit}
+.linkbtn,.flink{background:none;border:0;cursor:pointer;color:inherit;font:inherit}
+.flink{display:block;padding:.8rem 0 1.6rem;color:#bbb;font-size:1.4rem;text-align:left}.flink:hover{color:#fff}
+.linkbtn{padding:0;color:var(--fg)}
+.chooser{position:fixed;inset:0;z-index:140;background:#0006;display:flex;align-items:flex-end;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px)}
+.chooser.on{opacity:1;visibility:visible}
+.chin{position:relative;width:100%;background:#fff;border-radius:1.6rem 1.6rem 0 0;padding:2.8rem 2rem calc(2.4rem + env(safe-area-inset-bottom));display:grid;gap:1.2rem;transform:translateY(100%);transition:transform .4s var(--ease)}
+.chooser.on .chin{transform:none}
+.chin::before{content:"";position:absolute;top:.9rem;left:50%;width:4rem;height:4px;margin-left:-2rem;border-radius:4px;background:#ddd}
+.chx{position:absolute;right:.6rem;top:.6rem;width:4.4rem;height:4.4rem;border:0;background:none;font-size:2.8rem;font-weight:300;cursor:pointer}
+.ch-t{font-family:var(--serif);font-size:2.1rem;margin:0;padding-right:4rem;line-height:1.2}.ch-s{margin:-.4rem 0 .6rem;color:var(--mut);font-size:1.3rem}
+.chopt{display:flex;align-items:center;gap:1.4rem;min-height:6rem;padding:1rem 1.8rem;border-radius:1.4rem;color:#fff;text-decoration:none;font-size:1.7rem;font-weight:500;transition:transform .2s var(--ease),filter .2s}
+.chopt:hover{filter:brightness(1.06)}.chopt:active{transform:scale(.98)}
+.chopt.im{background:linear-gradient(180deg,#0A84FF,#007AFF)}.chopt.wa{background:#25D366}
+.chopt small{display:block;font-size:1.2rem;font-weight:400;opacity:.85}
+.chi{width:2.8rem;height:2.8rem;flex:none;fill:#fff;stroke:none}
+@media(min-width:750px){.chooser{align-items:center;justify-content:center}.chin{max-width:40rem;border-radius:1.6rem;padding:3.2rem 2.8rem 2.8rem;transform:translateY(1.6rem) scale(.97);opacity:0;transition:transform .35s var(--ease),opacity .3s;box-shadow:0 30px 60px -20px #0005}.chooser.on .chin{opacity:1}.chin::before{display:none}}
