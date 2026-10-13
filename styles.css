@@ -192,3 +192,9 @@ button.ico{background:none;border:0;cursor:pointer;padding:0;color:inherit}
 .chopt small{display:block;font-size:1.2rem;font-weight:400;opacity:.85}
 .chi{width:2.8rem;height:2.8rem;flex:none;fill:#fff;stroke:none}
 @media(min-width:750px){.chooser{align-items:center;justify-content:center}.chin{max-width:40rem;border-radius:1.6rem;padding:3.2rem 2.8rem 2.8rem;transform:translateY(1.6rem) scale(.97);opacity:0;transition:transform .35s var(--ease),opacity .3s;box-shadow:0 30px 60px -20px #0005}.chooser.on .chin{opacity:1}.chin::before{display:none}}
+.chopt.em{background:#1c1c1e}
+/* v8: larger logos (~22%) */
+.logo img{height:39px}.dhead img{height:34px}.ftr .logo img{height:52px}
+@media(min-width:750px){.logo img{height:46px}}
+@media(min-width:990px){.logo img{height:54px}.ftr .logo img{height:54px}}
+.dl.msgbtn{color:inherit}
