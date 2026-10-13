@@ -95,3 +95,4 @@ details p{color:var(--mut);margin:1.2rem 0 0}
 @media(max-width:700px){.logo img{height:34px}}
 .hdr:not(.solid) .logo img{filter:invert(1);transition:filter .35s}
 body.menu-open .hdr .logo img{filter:none}
+.fab{right:auto;left:2rem}
