@@ -3,49 +3,65 @@
 <title>Product Review · LeiteMelo (internal)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Red+Hat+Display:wght@300;400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css?v=11"><link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+<link rel="stylesheet" href="../styles.css?v=12"><link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
 </head><body class="rv">
 <header class="rvh"><img src="../images/logo-dark.svg" alt="Leite Melo Engravings"><span class="rvtag">Product Review</span><button class="ulink" id="logout" hidden>Log out</button></header>
 <main class="wrap">
-<section id="login" class="rvlogin" hidden><h1>Product Review</h1><p>Private area. Paste your GitHub fine-grained token (repo <b>leitemelo-site</b>, Contents: read &amp; write). It is stored only in this browser.</p>
+<section id="login" class="rvlogin" hidden><h1>Product Review</h1><p>Private area. Paste your GitHub fine-grained token (repos <b>leitemelo-products</b> and <b>leitemelo-site</b>, Contents: read &amp; write). It is stored only in this browser.</p>
 <form id="lf"><label>GitHub token<input id="tok" type="password" autocomplete="off" spellcheck="false" placeholder="github_pat_…" required></label><button class="btn block" type="submit">Log in</button></form><p class="rvmsg" id="lmsg" role="alert"></p></section>
 <section id="app" hidden><div class="rvbar"><div class="chips" role="tablist" id="tabs"></div><p class="note" id="who"></p></div><div class="grid" id="list"></div></section>
 </main>
 <div class="toast" id="toast" role="status"></div>
 <div class="sheet" id="rj" aria-hidden="true" role="dialog" aria-modal="true"><div class="sheetin"><button class="sclose" id="rjx" aria-label="Close">&times;</button><h3 id="rjt">Reject</h3><label>Note (optional)<textarea id="rjn" rows="3" placeholder="Why? e.g. too close to existing item, price too low…"></textarea></label><button class="btn block" id="rjok">Reject product</button></div></div>
 <script>
-const OWNER='tobotMelo',REPO='leitemelo-site',PATH='data/products.json',API='https://api.github.com',K='lm_review_token';
+const OWNER='tobotMelo',SITE='leitemelo-site',PRIV='leitemelo-products',PPATH='products.json',PUB='data/products.json',API='https://api.github.com',K='lm_review_token';
+const PUBF=['status','qa','priceConfirmed','hold','id','title','description','personalization','price','priceLabel','image','method','availability','activeUntil','updated'];
 const $=id=>document.getElementById(id),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let tok=localStorage.getItem(K),data=null,sha=null,tab='Pending',busy=false,rjId=null;
-const gh=(p,o={})=>fetch(API+p,{...o,headers:{Authorization:'Bearer '+tok,Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28',...(o.body?{'Content-Type':'application/json'}:{})}});
+const gh=(p,o={})=>fetch(API+p,{...o,cache:'no-store',headers:{Authorization:'Bearer '+tok,Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28',...(o.body?{'Content-Type':'application/json'}:{})}});
 const b64d=s=>new TextDecoder().decode(Uint8Array.from(atob(s.replace(/\n/g,'')),c=>c.charCodeAt(0)));
 const b64e=s=>{const b=new TextEncoder().encode(s);let r='';for(let i=0;i<b.length;i+=0x8000)r+=String.fromCharCode(...b.subarray(i,i+0x8000));return btoa(r)};
-function toast(m,err){const t=$('toast');t.textContent=m;t.className='toast on'+(err?' err':'');clearTimeout(t._t);t._t=setTimeout(()=>t.className='toast',4000)}
+const today=()=>new Date().toLocaleDateString('en-CA',{timeZone:'America/Chicago'});
+/* gate: reasons Accept is blocked (empty = ok). Same rules on the public site. */
+function gate(p){const r=[];if(String(p.qa||'').toLowerCase()!=='approved')r.push('QA not approved yet');if(p.priceConfirmed!==true)r.push('price not confirmed');if(p.hold)r.push('on hold');if(p.activeUntil&&today()>p.activeUntil)r.push('season ended '+p.activeUntil);return r}
+const publishable=p=>p.status==='Accepted'&&!gate(p).length&&p.price&&!/^tbd/i.test(String(p.price));
+function toast(m,err){const t=$('toast');t.textContent=m;t.className='toast on'+(err?' err':'');clearTimeout(t._t);t._t=setTimeout(()=>t.className='toast',5000)}
 function showLogin(msg){$('app').hidden=true;$('logout').hidden=true;$('login').hidden=false;$('lmsg').textContent=msg||''}
+async function canPush(repo){const r=await gh(`/repos/${OWNER}/${repo}`);if(!r.ok)throw 'Token has no access to '+repo+' ('+r.status+').';const j=await r.json();if(!j.permissions||!j.permissions.push)throw 'Token lacks write access to '+repo+'.'}
 async function verify(){
   if(!tok)return showLogin();
   try{const u=await gh('/user');if(!u.ok)throw 'Token rejected by GitHub ('+u.status+').';const me=await u.json();
     if(me.login.toLowerCase()!==OWNER.toLowerCase())throw 'This token belongs to '+me.login+', not '+OWNER+'.';
-    const r=await gh(`/repos/${OWNER}/${REPO}`);if(!r.ok)throw 'Token has no access to '+REPO+'.';const rp=await r.json();
-    if(!rp.permissions||!rp.permissions.push)throw 'Token lacks write (push) access to '+REPO+'.';
+    await canPush(PRIV);await canPush(SITE);
     await load();$('login').hidden=true;$('app').hidden=false;$('logout').hidden=false;$('who').textContent='Signed in as '+me.login;render();
   }catch(e){localStorage.removeItem(K);tok=null;data=null;$('list').innerHTML='';showLogin(typeof e==='string'?e:'Could not reach GitHub. Try again.')}
 }
-async function load(){const r=await gh(`/repos/${OWNER}/${REPO}/contents/${PATH}?ref=main&t=${Date.now()}`,{cache:'no-store'});if(!r.ok)throw 'Could not load '+PATH+' ('+r.status+').';const j=await r.json();sha=j.sha;data=JSON.parse(b64d(j.content))}
-function card(p){const st=p.status||'Pending',qa=(p.qa||'pending').toLowerCase(),tbd=!p.price||/^tbd/i.test(String(p.price).trim()),ok=qa==='approved'&&!tbd,why=[qa!=='approved'?'QA not approved yet':'',tbd?'price is TBD':''].filter(Boolean).join(' and ');return `<article class="card rvcard" data-id="${esc(p.id)}"><div class="media"><img src="../${esc(p.image)}" alt="${esc(p.title)}" loading="lazy"><span class="tag st-${st.toLowerCase()}">${esc(st)}</span><span class="tag qa qa-${esc(qa)}">QA: ${esc(qa)}</span></div>
+async function getFile(repo,path){const r=await gh(`/repos/${OWNER}/${repo}/contents/${path}?ref=main&t=${Date.now()}`);if(r.status===404)return {sha:null,json:null};if(!r.ok)throw 'Could not load '+repo+'/'+path+' ('+r.status+').';const j=await r.json();return {sha:j.sha,json:JSON.parse(b64d(j.content))}}
+async function putFile(repo,path,obj,fsha,msg){return gh(`/repos/${OWNER}/${repo}/contents/${path}`,{method:'PUT',body:JSON.stringify({message:msg,content:b64e(JSON.stringify(obj,null,2)+'\n'),...(fsha?{sha:fsha}:{}),branch:'main'})})}
+async function load(){const f=await getFile(PRIV,PPATH);if(!f.json)throw 'products.json not found in '+PRIV+'.';sha=f.sha;data=f.json}
+async function publish(msg){const pub={version:2,updated:today(),note:'Public, auto-generated by /review/. Only publishable items.',products:data.products.filter(publishable).map(p=>Object.fromEntries(PUBF.filter(k=>p[k]!==undefined&&p[k]!==''&&p[k]!==false).map(k=>[k,p[k]])))};
+  for(let a=0;a<2;a++){const f=await getFile(SITE,PUB);const r=await putFile(SITE,PUB,pub,f.sha,'Publish: '+msg);if(r.ok)return pub.products.length;if(a===0&&(r.status===409||r.status===422))continue;throw 'Public site update failed ('+r.status+').'}}
+function card(p){const st=p.status||'Pending',qa=(p.qa||'pending').toLowerCase(),why=gate(p),ok=!why.length;
+return `<article class="card rvcard${p.hold?' held':''}" data-id="${esc(p.id)}"><div class="media"><img src="../${esc(p.image)}" alt="${esc(p.title)}" loading="lazy"><span class="tag st-${st.toLowerCase()}">${esc(st)}</span><span class="tag qa qa-${esc(qa)}">QA: ${esc(qa)}</span>${p.hold?'<span class="tag hold">Hold</span>':''}</div>
 <p class="vendor">${esc(p.method||'')}${p.machine?' · '+esc(p.machine):''}</p><h3>${esc(p.title)}</h3><p class="rvdesc">${esc(p.description)}</p>
-<p class="mat"><b>Personalization:</b> ${esc(p.personalization)}</p><p class="price">${p.price&&p.price!=='TBD'?esc(p.price):'Price TBD'}</p>
-${p.note?`<p class="rvnote">Note: ${esc(p.note)}</p>`:''}${p.qaNote?`<p class="rvnote">QA note: ${esc(p.qaNote)}</p>`:''}<p class="mat small">Updated ${esc(p.updated||'')}</p>
-<div class="rvact"><button class="btn sm acc" data-a="Accepted" ${st==='Accepted'||!ok?'disabled':''} ${!ok?`title="Can't accept: ${why}" aria-describedby="why-${esc(p.id)}"`:''}>Accept</button><button class="pbtn rej" data-a="Rejected" ${st==='Rejected'?'disabled':''}>Reject</button>${!ok&&st!=='Accepted'?`<p class="rvwhy" id="why-${esc(p.id)}">Accept locked: ${why}.</p>`:''}${st!=='Pending'?'<button class="ulink rst" data-a="Pending">Reset to pending</button>':''}</div></article>`}
+<p class="mat"><b>Personalization:</b> ${esc(p.personalization)}</p>
+${p.priceLabel?`<p class="plabel">${esc(p.priceLabel)}</p>`:''}<p class="price">${p.priceConfirmed===true&&p.price&&p.price!=='TBD'?esc(p.price):'Price TBD'}</p>${p.researchRange?`<p class="rvrange">Research range, not your price: ${esc(p.researchRange)}</p>`:''}
+${p.availability?`<p class="avail">${esc(p.availability)}</p>`:''}${p.activeUntil?`<p class="rvnote">Seasonal: shown until ${esc(p.activeUntil)}</p>`:''}
+${p.hold?`<p class="rvnote holdr">Hold: ${esc(p.holdReason||'')}</p>`:''}${p.note?`<p class="rvnote">Note: ${esc(p.note)}</p>`:''}${p.qaNote?`<p class="rvnote">QA note: ${esc(p.qaNote)}</p>`:''}<p class="mat small">Updated ${esc(p.updated||'')}</p>
+<div class="rvact"><button class="btn sm acc" data-a="Accepted" ${st==='Accepted'||!ok?'disabled':''} ${!ok?`title="Can't accept: ${esc(why.join(', '))}"`:''}>Accept</button><button class="pbtn rej" data-a="Rejected" ${st==='Rejected'?'disabled':''}>Reject</button>${!ok&&st!=='Accepted'?`<p class="rvwhy">Accept locked: ${esc(why.join(', '))}.</p>`:''}${st!=='Pending'?'<button class="ulink rst" data-a="Pending">Reset to pending</button>':''}</div></article>`}
 function render(){const ps=data.products,c=s=>ps.filter(p=>s==='All'||p.status===s).length;
   $('tabs').innerHTML=['All','Pending','Accepted','Rejected'].map(s=>`<button class="chip${s===tab?' on':''}" data-t="${s}">${s} (${c(s)})</button>`).join('');
   const l=ps.filter(p=>tab==='All'||p.status===tab);$('list').innerHTML=l.length?l.map(card).join(''):'<p class="note">Nothing here.</p>'}
-async function act(id,status,note){if(busy)return;busy=true;document.body.classList.add('busy');
-  try{for(let a=0;a<2;a++){const p=data.products.find(x=>x.id===id);if(!p)throw 'Product not found.';if(status==='Accepted'&&!((p.qa||'').toLowerCase()==='approved'&&p.price&&!/^tbd/i.test(String(p.price).trim())))throw 'Accept blocked: needs QA approved and a real price.';p.status=status;p.note=status==='Rejected'?(note||''):(status==='Pending'?p.note:'');p.updated=new Date().toISOString().slice(0,10);data.updated=p.updated;
-      const r=await gh(`/repos/${OWNER}/${REPO}/contents/${PATH}`,{method:'PUT',body:JSON.stringify({message:`Review: ${status} ${p.title}`,content:b64e(JSON.stringify(data,null,2)+'\n'),sha,branch:'main'})});
-      if(r.ok){sha=(await r.json()).content.sha;toast(`${status}: ${p.title}. Saved to GitHub${status==='Accepted'?' — live on the site in a few minutes':''}.`);break}
+async function act(id,status,note){if(busy)return;busy=true;document.body.classList.add('busy');let title='';
+  try{let saved=false;for(let a=0;a<2&&!saved;a++){const p=data.products.find(x=>x.id===id);if(!p)throw 'Product not found.';title=p.title;
+      if(status==='Accepted'&&gate(p).length)throw 'Accept blocked: '+gate(p).join(', ')+'.';
+      p.status=status;p.note=status==='Rejected'?(note||''):(status==='Pending'?p.note:'');p.updated=today();data.updated=p.updated;
+      const r=await putFile(PRIV,PPATH,data,sha,`Review: ${status} ${p.title}`);
+      if(r.ok){sha=(await r.json()).content.sha;saved=true;break}
       if((r.status===409||r.status===422)&&a===0){await load();continue}
       throw 'GitHub said '+r.status+' — '+((await r.json().catch(()=>({}))).message||'save failed')}
+    try{const n=await publish(`${status} ${title}`);toast(`${status}: ${title}. Saved. Public site now lists ${n} product${n===1?'':'s'} (live in a few minutes).`)}
+    catch(e){toast(`${status} saved privately, but the public site was NOT updated: ${e}. Try the action again.`,true)}
   }catch(e){toast(typeof e==='string'?e:'Network error, not saved.',true);await load().catch(()=>{})}
   busy=false;document.body.classList.remove('busy');render()}
 $('lf').onsubmit=e=>{e.preventDefault();tok=$('tok').value.trim();$('tok').value='';localStorage.setItem(K,tok);$('lmsg').textContent='Checking…';verify()};
