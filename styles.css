@@ -218,3 +218,5 @@ button.ico{background:none;border:0;cursor:pointer;padding:0;color:inherit}
 .rvact [disabled]{opacity:.35;pointer-events:none}body.busy #list{opacity:.6;pointer-events:none}
 .toast{position:fixed;left:50%;bottom:2rem;transform:translate(-50%,2rem);max-width:min(92vw,48rem);background:#121212;color:#fff;padding:1.2rem 1.8rem;font-size:1.4rem;opacity:0;visibility:hidden;transition:.3s;z-index:200}.toast.on{opacity:1;visibility:visible;transform:translate(-50%,0)}.toast.err{background:#8a1c14}
 [hidden]{display:none!important}.tag.ph{left:.8rem;right:auto;top:auto;bottom:.8rem}
+.tag.qa{top:3.6rem}.tag.qa-pending{background:#eceae7;color:#555}.tag.qa-approved{background:#d7f5df;color:#11602c}.tag.qa-flagged{background:#fde2e1;color:#8a1c14}
+.rvwhy{grid-column:1/-1;margin:.2rem 0 0;font-size:1.15rem;color:#8a1c14;line-height:1.4}

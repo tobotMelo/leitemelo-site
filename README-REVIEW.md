@@ -22,12 +22,19 @@ The token is saved in that browser's local storage. **Log out** removes it. If t
 - **Reject** asks for an optional note, then saves. **Reset to pending** undoes either one.
 - Every action is a commit to `main`, so you can see history and undo it on GitHub. A message confirms success or shows the error.
 
+
+## QA gate
+Every product has a `qa` field, set to `pending`, `approved` or `flagged`, plus an optional `qaNote`. All products start as `pending`.
+- **Accept** stays disabled, with the reason shown on the card, until `qa` is `approved` **and** `price` is a real price rather than `TBD`. **Reject** always works.
+- The public site also shows only products that are Accepted **and** QA approved **and** have a real price, as a second safeguard.
+- **How QA approves:** the QA/QC Reviewer tells the **Webmaster** the result for each product, for example "p006 approved" or "p012 flagged: text too small". The Webmaster edits `data/products.json`, setting `"qa": "approved"` or `"qa": "flagged"` and `"qaNote": "…"`, and commits. The review page shows the QA badge and note the next time it loads.
+
 ## 4. Adding new products (team)
 Add an object to the `products` array in `data/products.json` with `"status": "Pending"`:
 ```json
 {"id":"p026-short-slug","title":"…","description":"…","personalization":"…","price":"$20–30 or TBD",
  "machine":"F1 Ultra | P2S | O1 Omni","method":"…","image":"images/products/p026-short-slug.jpg",
- "image_is_placeholder":false,"status":"Pending","note":"","updated":"YYYY-MM-DD","internal_notes":"…","source":"…"}
+ "image_is_placeholder":false,"status":"Pending","note":"","qa":"pending","qaNote":"","updated":"YYYY-MM-DD","internal_notes":"…","source":"…"}
 ```
 **Designer:** put mockups in `images/products/` (square JPG/PNG, about 1200px) and point the product's `"image"` at the file.
 Until a mockup exists, products use a generated placeholder in `images/placeholders/`, marked "PLACEHOLDER — NO MOCKUP".
