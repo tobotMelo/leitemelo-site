@@ -4,7 +4,7 @@
 <link rel="canonical" href="https://lmengravings.com/"><meta property="og:url" content="https://lmengravings.com/"><meta property="og:title" content="LeiteMelo | Personalized Engraved Gifts"><meta property="og:image" content="https://lmengravings.com/images/h-gift.jpg"><meta name="theme-color" content="#ffffff">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Red+Hat+Display:wght@300;400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=10"><link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+<link rel="stylesheet" href="styles.css?v=11"><link rel="icon" type="image/svg+xml" href="images/favicon.svg">
 </head><body>
 <!-- NOTE: All photos in /images are DEMO STOCK images (Unsplash License / Wikimedia Commons CC0, CC BY, CC BY-SA; see images/CREDITS.txt). Replace with real product photos before launch. -->
 <header class="hdr" id="hdr">
@@ -29,7 +29,7 @@
 
 
 
-<section class="sec soon" id="collection"><div class="wrap"><div class="soonin"><p class="eyebrow">Laser engraving &amp; UV printing</p><h2>New collection coming soon</h2><p>We’re photographing our latest pieces. In the meantime, tell us your idea — names, logos, photos or a special date — and we’ll send a free mockup and quote.</p><button class="btn msgbtn">Send us a message</button></div><ul class="trust"><li><strong>Free mockup</strong>Approve before we make it</li><li><strong>No minimums</strong>One piece or a hundred</li><li><strong>Text to order</strong>iMessage or WhatsApp</li><li><strong>Made locally</strong>By LeiteMelo LLC</li></ul></div></section>
+<section class="sec soon" id="collection"><div class="wrap"><div class="soonin"><p class="eyebrow">Laser engraving &amp; UV printing</p><h2 id="coll-h">New collection coming soon</h2><p id="coll-p">We’re photographing our latest pieces. In the meantime, tell us your idea — names, logos, photos or a special date — and we’ll send a free mockup and quote.</p><button class="btn msgbtn">Send us a message</button></div><div class="coll" id="coll" hidden></div><ul class="trust"><li><strong>Free mockup</strong>Approve before we make it</li><li><strong>No minimums</strong>One piece or a hundred</li><li><strong>Text to order</strong>iMessage or WhatsApp</li><li><strong>Made locally</strong>By LeiteMelo LLC</li></ul></div></section>
 <section class="sec blush" id="how"><div class="wrap"><div class="sechead c"><p class="eyebrow">Personalization made easy</p><h2>How It Works</h2></div><ol class="steps">
 <li><span class="num">1</span><h3>Share your idea</h3><p>Tell us your idea, or send us your own item.</p></li>
 <li><span class="num">2</span><h3>Add your touch</h3><p>Names, dates, monograms, logos or a favorite photo.</p></li>
@@ -114,4 +114,11 @@ function closeCh(){ch.classList.remove('on');ch.setAttribute('aria-hidden','true
 document.querySelectorAll('.msgbtn').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();if(b.closest('.drawer'))closeD();openCh(b.dataset.t)}));
 ch.onclick=e=>{if(e.target===ch)closeCh()};ch.querySelector('.chx').onclick=closeCh;ch.querySelectorAll('.chopt').forEach(a=>a.addEventListener('click',()=>setTimeout(closeCh,300)));
 addEventListener('keydown',e=>{if(e.key==='Escape')closeCh()});
+
+/* accepted products from data/products.json */
+(async()=>{try{const r=await fetch('data/products.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)return;const d=await r.json();const ps=(d.products||[]).filter(p=>p.status==='Accepted');if(!ps.length)return;
+const e=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+$('coll').innerHTML=ps.map(p=>`<article class="card"><div class="media"><img src="${e(p.image)}" alt="${e(p.title)}" loading="lazy"></div><p class="vendor">${e(p.method||'Personalized')}</p><h3>${e(p.title)}</h3><p class="rvdesc">${e(p.description)}</p><p class="mat">Personalize: ${e(p.personalization)}</p><p class="price">${p.price&&p.price!=='TBD'?e(p.price):'Quote on request'}</p><button class="pbtn msgbtn" data-t="${e(`Hi LeiteMelo! I'd like to order: ${p.title}.\nQuantity: 1\nPersonalization: `)}">Personalize &amp; order</button></article>`).join('');
+$('coll').hidden=false;$('coll-h').textContent='The New Collection';$('coll-p').textContent='Every piece is personalized for you. Tap a product to message us — we reply with a free mockup and quote.';
+$('coll').querySelectorAll('.msgbtn').forEach(b=>b.addEventListener('click',ev=>{ev.preventDefault();openCh(b.dataset.t)}));}catch(err){}})();
 </script></body></html>
