@@ -220,3 +220,8 @@ button.ico{background:none;border:0;cursor:pointer;padding:0;color:inherit}
 [hidden]{display:none!important}.tag.ph{left:.8rem;right:auto;top:auto;bottom:.8rem}
 .tag.qa{top:3.6rem}.tag.qa-pending{background:#eceae7;color:#555}.tag.qa-approved{background:#d7f5df;color:#11602c}.tag.qa-flagged{background:#fde2e1;color:#8a1c14}
 .rvwhy{grid-column:1/-1;margin:.2rem 0 0;font-size:1.15rem;color:#8a1c14;line-height:1.4}
+/* v12 */
+.tag.hold{top:6.4rem;background:#121212;color:#fff}.rvcard.held{opacity:.85}.holdr{background:#fff3cd!important}
+.rvrange{font-size:1.2rem;color:var(--mut);margin:-.6rem 0 .8rem;font-style:italic}
+.avail{font-size:1.2rem;font-weight:500;color:#7a5a00;background:#fff8e6;padding:.5rem .8rem;margin:0 0 1rem;display:inline-block}
+.plabel{font-size:1.05rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:.2rem 0 0}
